@@ -2,11 +2,18 @@ import type { NodeAttributes, TreeNode } from "./types";
 
 const BASE = "";
 
-export async function connectToServer(url: string): Promise<{ status: string; url: string }> {
+export interface ConnectOptions {
+  url: string;
+  security_mode: "none" | "username";
+  username?: string;
+  password?: string;
+}
+
+export async function connectToServer(opts: ConnectOptions): Promise<{ status: string; url: string }> {
   const res = await fetch(`${BASE}/api/connect`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ url }),
+    body: JSON.stringify(opts),
   });
   if (!res.ok) {
     const err = await res.json();

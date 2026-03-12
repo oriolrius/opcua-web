@@ -6,6 +6,7 @@ import NodePanel from "./components/NodePanel";
 import SubscriptionPanel from "./components/SubscriptionPanel";
 import ValueChart from "./components/ValueChart";
 import { connectToServer, disconnectFromServer, browse, getNodeAttributes, createWebSocket } from "./api";
+import type { ConnectOptions } from "./api";
 import type { TreeNode, NodeAttributes, MonitoredItem, WsResponse } from "./types";
 
 const CHART_COLORS = [
@@ -69,9 +70,9 @@ export default function App() {
     return () => cleanupWs();
   }, [cleanupWs]);
 
-  const handleConnect = async (url: string) => {
-    await connectToServer(url);
-    setServerUrl(url);
+  const handleConnect = async (opts: ConnectOptions) => {
+    await connectToServer(opts);
+    setServerUrl(opts.url);
     setConnected(true);
     const roots = await browse();
     setTreeRoots(roots);

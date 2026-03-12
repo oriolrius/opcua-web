@@ -3,6 +3,9 @@ from pydantic import BaseModel
 
 class ConnectRequest(BaseModel):
     url: str
+    security_mode: str = "none"  # "none", "username"
+    username: str | None = None
+    password: str | None = None
 
 
 class ConnectionStatus(BaseModel):

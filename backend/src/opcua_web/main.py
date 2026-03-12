@@ -35,8 +35,13 @@ app.add_middleware(
 @app.post("/api/connect")
 async def connect(req: ConnectRequest):
     try:
-        await manager.connect(req.url)
-        return {"status": "connected", "url": req.url}
+        await manager.connect(
+            url=req.url,
+            security_mode=req.security_mode,
+            username=req.username,
+            password=req.password,
+        )
+        return {"status": "connected", "url": req.url, "security_mode": req.security_mode}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 

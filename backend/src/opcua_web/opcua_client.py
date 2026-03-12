@@ -36,15 +36,28 @@ class OPCUAManager:
         self.url: str | None = None
         self.connected: bool = False
 
-    async def connect(self, url: str):
+    async def connect(
+        self,
+        url: str,
+        security_mode: str = "none",
+        username: str | None = None,
+        password: str | None = None,
+    ):
         if self.connected:
             await self.disconnect()
         self.client = Client(url)
         self.client.session_timeout = 30000
+
+        if security_mode == "none":
+            self.client.set_security_string("")
+        elif security_mode == "username" and username and password:
+            self.client.set_user(username)
+            self.client.set_password(password)
+
         await self.client.connect()
         self.url = url
         self.connected = True
-        logger.info(f"Connected to {url}")
+        logger.info(f"Connected to {url} (security: {security_mode})")
 
     async def disconnect(self):
         if self.client:
