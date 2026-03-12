@@ -10,7 +10,7 @@ demo:
 
 # Start the backend
 backend:
-	cd backend && uv run uvicorn opcua_web.main:app --reload --host 0.0.0.0 --port 8000
+	cd backend && uv run uvicorn opcua_web.main:app --reload --host 0.0.0.0 --port 8765
 
 # Start the frontend dev server
 frontend:
