@@ -131,6 +131,7 @@ export default function ConnectionBar({ connected, serverUrl, onConnect, onDisco
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Username"
             disabled={loading}
+            autoComplete="off"
             className="w-48 px-3 py-1.5 bg-slate-800 border border-slate-600 rounded-md text-sm
                        text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500
                        disabled:opacity-50"
@@ -142,6 +143,7 @@ export default function ConnectionBar({ connected, serverUrl, onConnect, onDisco
             onKeyDown={(e) => e.key === "Enter" && handleConnect()}
             placeholder="Password"
             disabled={loading}
+            autoComplete="new-password"
             className="w-48 px-3 py-1.5 bg-slate-800 border border-slate-600 rounded-md text-sm
                        text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500
                        disabled:opacity-50"
