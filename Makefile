@@ -1,4 +1,4 @@
-.PHONY: dev backend frontend demo install install-backend install-frontend
+.PHONY: dev backend frontend demo install install-backend install-frontend test test-e2e test-integration
 
 # Run everything together
 dev:
@@ -24,3 +24,14 @@ install-backend:
 
 install-frontend:
 	cd frontend && npm install
+
+# Run unit E2E tests (mocked backend, no server required)
+test-e2e:
+	cd frontend && npm run test:e2e
+
+# Run integration tests (starts demo OPC UA server v1.2.1 + backend + frontend)
+test-integration:
+	cd frontend && npm run test:integration
+
+# Run all tests
+test: test-e2e test-integration
