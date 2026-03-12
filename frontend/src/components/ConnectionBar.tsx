@@ -124,7 +124,7 @@ export default function ConnectionBar({ connected, serverUrl, onConnect, onDisco
       </div>
 
       {securityMode === "username" && !connected && (
-        <div className="flex items-center gap-2 ml-[140px]">
+        <div className="flex items-center gap-2 ml-[140px]" data-form-type="other">
           <input
             type="text"
             value={username}
@@ -132,21 +132,25 @@ export default function ConnectionBar({ connected, serverUrl, onConnect, onDisco
             placeholder="Username"
             disabled={loading}
             autoComplete="off"
+            data-lpignore="true"
+            data-1p-ignore
             className="w-48 px-3 py-1.5 bg-slate-800 border border-slate-600 rounded-md text-sm
                        text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500
                        disabled:opacity-50"
           />
           <input
-            type="password"
+            type="text"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleConnect()}
             placeholder="Password"
             disabled={loading}
-            autoComplete="new-password"
+            autoComplete="off"
+            data-lpignore="true"
+            data-1p-ignore
             className="w-48 px-3 py-1.5 bg-slate-800 border border-slate-600 rounded-md text-sm
                        text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500
-                       disabled:opacity-50"
+                       disabled:opacity-50 [-webkit-text-security:disc]"
           />
         </div>
       )}
