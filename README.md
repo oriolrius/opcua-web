@@ -12,6 +12,23 @@ A modern, real-time OPC UA client with a powerful web interface. Browse server a
 - **Sample Storage** - Configure max samples per monitored item
 - **Dark Theme** - Modern dark UI optimized for industrial monitoring
 
+## Screenshots
+
+### Connected to OPC UA Server
+![Connected state showing tree with root nodes](docs/screenshots/connected.png)
+
+### Node Details Panel
+![Node details showing Level attributes, DataType Double, and Subscribe/Poll controls](docs/screenshots/node-details.png)
+
+### Live Monitoring
+![Full view with tree, node details with Monitored badge, live chart with 3 series, and monitored panel](docs/screenshots/live-monitoring.png)
+
+### Chart Filtering
+![Chart showing only 2 series after hiding InletFlow](docs/screenshots/chart-filtered.png)
+
+### Authentication Mode
+![Username/Password auth mode with credential fields](docs/screenshots/auth-mode.png)
+
 ## Architecture
 
 ```
